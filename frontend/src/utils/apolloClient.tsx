@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://movieql2.vercel.app/",
+  uri: "http://127.0.0.1:8118/graphql/",
   cache: new InMemoryCache(),
 });
 
