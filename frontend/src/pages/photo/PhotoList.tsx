@@ -1,14 +1,20 @@
 import { Outlet } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import Movie, { MoviePropsType } from "./Photo";
+import Photo, { PhotoPropsType } from "./Photo";
 
-const GET_MOVIES = gql`
-  {
-    movies {
-      id
-      title
-      medium_cover_image
+const GET_PHOTOlIST = gql`
+  query {
+    getPostList {
+      result
+      objects {
+        id
+        title
+        contents
+        image
+        writer
+        ctime
+      }
     }
   }
 `;
@@ -44,7 +50,7 @@ const Loading = styled.div`
   margin-top: 10px;
 `;
 
-const MovieList = styled.div`
+const PhotoListComponent = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
@@ -53,25 +59,27 @@ const MovieList = styled.div`
   top: -50px;
 `;
 export default function PhotoList() {
-  const { loading, error, data } = useQuery(GET_MOVIES);
+  const { loading, error, data } = useQuery(GET_PHOTOlIST);
+  console.log(data);
   return (
     <>
       <Container>
         <Header>
-          <Title>Movie List</Title>
-          <Subtitle>Random Movie</Subtitle>
+          <Title>Codingj87</Title>
+          <Subtitle>🤗</Subtitle>
         </Header>
         {loading && <Loading>Loading...</Loading>}
         {error && <div>Error</div>}
-        <MovieList>
-          {data?.movies?.map((movie: MoviePropsType) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              medium_cover_image={movie.medium_cover_image}
+        <PhotoListComponent>
+          {data?.getPostList?.objects?.map((photo: PhotoPropsType) => (
+            <Photo
+              key={photo.id}
+              id={photo.id}
+              title={photo.title}
+              image={photo.image}
             />
           ))}
-        </MovieList>
+        </PhotoListComponent>
       </Container>
       <Outlet />
     </>

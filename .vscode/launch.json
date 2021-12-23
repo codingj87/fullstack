@@ -9,7 +9,7 @@
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/backend/manage.py",
-      "args": ["runserver", "127.0.0.1:8118"],
+      "args": ["runserver", "127.0.0.1:8117"],
       "django": true
     }
   ]

@@ -18,14 +18,14 @@ const Poster = styled.div`
   background-position: center center;
 `;
 
-export type MoviePropsType = { id: string; medium_cover_image: string };
+export type PhotoPropsType = { id: string; title: string; image: string };
 
-function Photo({ id, medium_cover_image }: MoviePropsType) {
+function Photo({ id, title, image }: PhotoPropsType) {
   return (
     <>
       <Container>
         <Link to={`/photoList/${id}`}>
-          <Poster bg={medium_cover_image} />
+          <Poster bg={image} />
         </Link>
       </Container>
     </>
