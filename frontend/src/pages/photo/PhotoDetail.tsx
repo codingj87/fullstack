@@ -2,14 +2,13 @@ import { useParams } from "react-router";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 
-const GET_MOVIE = gql`
-  query getMovie($id: Int!) {
-    movie(id: $id) {
+const GET_POST = gql`
+  query GetPost($id: Int) {
+    getPost(id: $id) {
       title
-      medium_cover_image
-      language
-      rating
-      description_intro
+      image
+      contents
+      writer
     }
   }
 `;
@@ -52,26 +51,23 @@ const Poster = styled.div`
   background-position: center center;
 `;
 export default function PhotoDetail() {
-  const { movieId } = useParams();
+  const { photoId } = useParams();
 
-  const { loading, error, data } = useQuery(GET_MOVIE, {
-    variables: { id: parseInt(movieId as string) },
+  const { loading, error, data } = useQuery(GET_POST, {
+    variables: { id: parseInt(photoId as string) },
   });
 
-  console.log(movieId);
   return (
     <>
       <Container>
         <Column>
-          <Title>{loading ? "Loading..." : data.movie.title}</Title>
+          <Title>{loading ? "Loading..." : data?.getPost?.title}</Title>
           <>
-            <Subtitle>
-              {data?.movie?.language} - {data?.movie?.rating}
-            </Subtitle>
-            <Description>{data?.movie?.description_intro} </Description>
+            <Subtitle>{data?.getPost?.writer}</Subtitle>
+            <Description>{data?.getPost?.contents} </Description>
           </>
         </Column>
-        {!loading && <Poster bg={data?.movie?.medium_cover_image}></Poster>}
+        {!loading && <Poster bg={data?.getPost?.image}></Poster>}
       </Container>
     </>
   );

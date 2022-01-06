@@ -1,6 +1,6 @@
 import graphene
-from fullstack.photo.type import PostListType
-from fullstack.photo.query import get_post_list
+from fullstack.photo.type import PostListType, PostType
+from fullstack.photo.query import get_post_list, get_post
 
 
 class Query(graphene.ObjectType):
@@ -10,3 +10,10 @@ class Query(graphene.ObjectType):
         writer=graphene.String(description='작성자'),
         resolver=get_post_list,
     )
+
+    get_post = graphene.Field( 
+        PostType,
+        id=graphene.Int(description='post id'),
+        resolver=get_post,
+    )
+

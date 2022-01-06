@@ -60,7 +60,6 @@ const PhotoListComponent = styled.div`
 `;
 export default function PhotoList() {
   const { loading, error, data } = useQuery(GET_PHOTOlIST);
-  console.log(data);
   return (
     <>
       <Container>
