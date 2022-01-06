@@ -43,11 +43,13 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = ["graphene_django"]
 
 LOCAL_APPS = [
+    "account.apps.AccountConfig",
     "fullstack.apps.FullstackConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
