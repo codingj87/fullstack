@@ -42,7 +42,7 @@ const Description = styled.p`
   font-size: 28px;
 `;
 
-const Poster = styled.div`
+const ImageComponent = styled.div`
   background-image: url(${(props: { bg: string }) => props.bg});
   width: 25%;
   height: 60%;
@@ -50,11 +50,11 @@ const Poster = styled.div`
   background-size: cover;
   background-position: center center;
 `;
-export default function PhotoDetail() {
-  const { photoId } = useParams();
+export default function PostDetail() {
+  const { postId } = useParams();
 
   const { loading, error, data } = useQuery(GET_POST, {
-    variables: { id: parseInt(photoId as string) },
+    variables: { id: parseInt(postId as string) },
   });
 
   return (
@@ -67,7 +67,9 @@ export default function PhotoDetail() {
             <Description>{data?.getPost?.contents} </Description>
           </>
         </Column>
-        {!loading && <Poster bg={data?.getPost?.image}></Poster>}
+        {!loading && (
+          <ImageComponent bg={data?.getPost?.image}></ImageComponent>
+        )}
       </Container>
     </>
   );

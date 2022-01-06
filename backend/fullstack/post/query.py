@@ -1,5 +1,5 @@
 from fullstack.models import Post
-from fullstack.photo.type import PostListType, PostType
+from fullstack.post.type import PostListType, PostType
 
 
 def get_post_list(parnet, info, **kwargs):

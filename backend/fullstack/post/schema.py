@@ -1,6 +1,6 @@
 import graphene
-from fullstack.photo.type import PostListType, PostType
-from fullstack.photo.query import get_post_list, get_post
+from fullstack.post.type import PostListType, PostType
+from fullstack.post.query import get_post_list, get_post
 
 
 class Query(graphene.ObjectType):

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import Photo, { PhotoPropsType } from "./Photo";
+import Photo, { PostPropsType } from "./Post";
 
-const GET_PHOTOlIST = gql`
+const GET_POST_lIST = gql`
   query {
     getPostList {
       result
@@ -50,7 +50,7 @@ const Loading = styled.div`
   margin-top: 10px;
 `;
 
-const PhotoListComponent = styled.div`
+const PostListComponent = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
@@ -58,8 +58,8 @@ const PhotoListComponent = styled.div`
   position: relative;
   top: -50px;
 `;
-export default function PhotoList() {
-  const { loading, error, data } = useQuery(GET_PHOTOlIST);
+export default function PostList() {
+  const { loading, error, data } = useQuery(GET_POST_lIST);
   return (
     <>
       <Container>
@@ -69,16 +69,16 @@ export default function PhotoList() {
         </Header>
         {loading && <Loading>Loading...</Loading>}
         {error && <div>Error</div>}
-        <PhotoListComponent>
-          {data?.getPostList?.objects?.map((photo: PhotoPropsType) => (
+        <PostListComponent>
+          {data?.getPostList?.objects?.map((post: PostPropsType) => (
             <Photo
-              key={photo.id}
-              id={photo.id}
-              title={photo.title}
-              image={photo.image}
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              image={post.image}
             />
           ))}
-        </PhotoListComponent>
+        </PostListComponent>
       </Container>
       <Outlet />
     </>

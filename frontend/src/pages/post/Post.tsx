@@ -18,13 +18,13 @@ const Poster = styled.div`
   background-position: center center;
 `;
 
-export type PhotoPropsType = { id: string; title: string; image: string };
+export type PostPropsType = { id: string; title: string; image: string };
 
-function Photo({ id, title, image }: PhotoPropsType) {
+function Photo({ id, title, image }: PostPropsType) {
   return (
     <>
       <Container>
-        <Link to={`/photoList/${id}`}>
+        <Link to={`/postList/${id}`}>
           <Poster bg={image} />
         </Link>
       </Container>
