@@ -20,7 +20,7 @@ const Poster = styled.div`
 
 export type PostPropsType = { id: string; title: string; image: string };
 
-function Photo({ id, title, image }: PostPropsType) {
+function Post({ id, title, image }: PostPropsType) {
   return (
     <>
       <Container>
@@ -32,4 +32,4 @@ function Photo({ id, title, image }: PostPropsType) {
   );
 }
 
-export default Photo;
+export default Post;
