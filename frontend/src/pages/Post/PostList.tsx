@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import Photo, { PostPropsType } from "./Post";
+import Post, { PostPropsType } from "./Post";
 
 const GET_POST_lIST = gql`
   query {
@@ -71,7 +71,7 @@ export default function PostList() {
         {error && <div>Error</div>}
         <PostListComponent>
           {data?.getPostList?.objects?.map((post: PostPropsType) => (
-            <Photo
+            <Post
               key={post.id}
               id={post.id}
               title={post.title}
