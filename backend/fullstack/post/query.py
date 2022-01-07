@@ -52,6 +52,16 @@ def get_post(parnet, info, **kwargs):
     ]
 
     post_id = kwargs.get('id')
-    post = list(filter(lambda post: post['id'] == post_id, objects))[0]
+    if post_id:
+        post = list(filter(lambda post: post['id'] == post_id, objects))[0]
+    else: 
+        post = {
+            'id': 0,
+            'title': '',
+            'contents': '',
+            'image': '',
+            'writer': '',
+            'ctime': 0,
+        }
 
     return post
